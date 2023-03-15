@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,400&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Add new book button -->
+        <div class="add-book">
+            <img src="https://cdn-icons-png.flaticon.com/512/8371/8371357.png" alt="" />
+            <span>Add new book</span>
+        </div>
+
+        <div class="show-items"></div>
+
+        <!-- Add new or edit modal -->
+        <div class="modal">
+            <div class="form">
+                <div class="close-btn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/7887/7887076.png" alt="" />
+                </div>
+                <input type="text" name="name" id="" placeholder="Name" />
+                <input type="number" name="price" id="" placeholder="Price" />
+                <input type="number" name="discount" id="" placeholder="Discount" />
+                <input type="file" name="image" id="" />
+                <div class="submit">
+                    <h4>Submit</h4>
+                </div>
+                <div class="update">
+                    <h4>Update</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading">
+            <img src="Spinner-0.6s-211px.gif" alt="" />
+        </div>
+        <script type="module" src="../controller/main.js"></script>
+        <script type="module" src="../utils/convertMoney.js"></script>
+    </body>
+</html>

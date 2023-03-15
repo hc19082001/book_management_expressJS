@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.5;
+}
+
+html {
+    background-color: aliceblue;
+}
+
+.add-book {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgb(152, 240, 101);
+    margin: 15px 0 0 15px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    &:hover {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        opacity: 0.8;
+    }
+    &:active {
+        opacity: 0.7;
+    }
+    img {
+        width: 25px;
+        height: 25px;
+    }
+    span {
+        margin-left: 5px;
+        font-weight: 600;
+        color: rgb(28, 83, 15);
+    }
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: none;
+    background-color: rgba(32, 32, 31, 0.527);
+
+    .form {
+        background-color: rgb(207, 241, 151);
+        min-width: 500px;
+        border-radius: 20px;
+        position: absolute;
+        padding: 25px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        animation: slideIn 0.3s ease-in-out;
+
+        .close-btn {
+            margin-top: -8px;
+            margin-right: -8px;
+            margin-bottom: 10px;
+            display: inline-block;
+
+            img {
+                position: relative;
+                width: 40px;
+                height: 40px;
+                float: right;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            &[type="number"]::-webkit-outer-spin-button,
+            &[type="number"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        .submit {
+            background-color: rgb(79, 202, 54);
+            margin-top: 15px;
+            padding: 10px;
+            color: white;
+            border-radius: 15px;
+            h4 {
+                text-align: center;
+            }
+            &:hover {
+                cursor: pointer;
+                transition: all 0.3s ease;
+                opacity: 0.8;
+            }
+            &:active {
+                opacity: 0.7;
+            }
+        }
+
+        .update {
+            @extend .submit;
+            background-color: rgb(170, 202, 54);
+            display: none;
+        }
+    }
+}
+
+.loading {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.438);
+    z-index: 10;
+    display: none;
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.show-items {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 25px;
+
+    .item {
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        width: 100%;
+        max-height: 300px;
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid orangered;
+            transform: translateY(-5px);
+
+            .options {
+                display: flex;
+            }
+        }
+
+        .item-image {
+            height: 65%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .item-des {
+            padding: 10px;
+            font-size: 15px;
+            .item-name {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+            }
+            .item-price {
+                margin-top: 10px;
+                .price-with-discount {
+                    opacity: 0.8;
+                    text-decoration: line-through;
+                }
+                .price {
+                    color: black;
+                    font-weight: 600;
+                }
+                .discount-price {
+                    margin-left: 5px;
+                    color: orangered;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .discount-label {
+            position: absolute;
+            display: inline-block;
+            background-color: orangered;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            top: 5px;
+            right: 5px;
+        }
+
+        .options {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.192);
+
+            .update,
+            .delete {
+                padding: 10px;
+                color: white;
+                border-radius: 5px;
+                margin-right: 10px;
+                &:hover {
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    transform: scale(1.1);
+                }
+                &:active {
+                    opacity: 0.7;
+                }
+            }
+
+            .update {
+                background-color: rgb(209, 198, 49);
+            }
+
+            .delete {
+                background-color: rgb(255, 0, 0);
+            }
+        }
+    }
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.slideOutEffect {
+    animation: slideOut 0.3s ease-in-out !important;
+}
+
+// Animation
+@keyframes slideIn {
+    0% {
+        transform: translate(-50%, -100%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(-50%, -100%);
+    }
+}
